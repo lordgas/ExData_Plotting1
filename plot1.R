@@ -1,0 +1,4 @@
+pow_consumption<-read.csv("household_power_consumption.txt", header = FALSE,sep=";", na.strings = "?",colClasses=c("character", "character", "numeric","numeric","numeric","numeric","numeric","numeric","numeric"),nrows=2880, skip=66636, col.names=c("Date","Time","Global_active_power","Global_reactive_power","Voltage","Global_intensity","Sub_metering_1","Sub_metering_2","Sub_metering_3"))
+pow_consumption$Date<-as.Date(pow_consumption$Date,format="%d/%m/%Y" )
+pow_consumption$Time<-strptime(pow_consumption$Time, format="%H:%M:%S")
+hist(pow_consumption$Global_active_power, xlab="Global Active Power (kilowatts)")
